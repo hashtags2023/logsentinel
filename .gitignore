@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+reports/*.html
+reports/*.json
+!reports/.gitkeep
+.DS_Store
+*.log
+!sample_logs/
