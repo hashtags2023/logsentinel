@@ -1,0 +1,5 @@
+# LogSentinel uses Python standard library only — no pip install needed.
+
+# Optional: install these for future dashboard features
+# plotly>=5.0
+# requests>=2.28
