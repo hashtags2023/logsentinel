@@ -11,6 +11,7 @@ from analyzer.parser import LogParser
 from analyzer.detectors import ThreatDetector
 from utils.report import ReportGenerator
 from utils.banner import print_banner
+from utils.ip_reputation import check_ips, format_reputation, get_api_key
 
 
 def parse_args():
@@ -51,6 +52,11 @@ Examples:
         type=int,
         default=5,
         help="Failed login threshold for brute-force detection (default: 5)"
+    )
+    parser.add_argument(
+        "--reputation",
+        action="store_true",
+        help="Check suspicious IPs against AbuseIPDB (requires ABUSEIPDB_KEY env variable)"
     )
     return parser.parse_args()
 
@@ -93,6 +99,28 @@ def main():
 
     # Print summary to terminal
     _print_summary(findings, args.verbose)
+
+
+    # IP Reputation lookup
+    if args.reputation:
+        api_key = get_api_key()
+        if not api_key:
+            print("[!] --reputation requires ABUSEIPDB_KEY environment variable.")
+            print("    Set it with: export ABUSEIPDB_KEY=your_key_here")
+        else:
+            # Collect unique IPs from findings
+            ips = list({f["ip"] for f in findings if f.get("ip")})
+            if ips:
+                print(f"\n[*] Checking {len(ips)} IP(s) against AbuseIPDB...")
+                results = check_ips(ips, api_key)
+                print("\n" + "=" * 60)
+                print("  IP REPUTATION RESULTS")
+                print("=" * 60)
+                for ip, data in results.items():
+                    print(format_reputation(ip, data))
+                print("=" * 60 + "\n")
+            else:
+                print("\n[*] No IPs found in findings to look up.")
 
     # Generate report if requested
     if args.output:

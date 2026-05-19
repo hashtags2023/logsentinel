@@ -77,7 +77,8 @@ class LogParser:
         self.log_type = log_type
         self.verbose = verbose
 
-    def detect_type(self, sample_lines: list[str]) -> str:
+    
+    def detect_type(self, sample_lines):
         sample = "\n".join(sample_lines[:50])
         scores = {lt: 0 for lt in AUTODETECT_SIGNATURES}
         for log_type, sigs in AUTODETECT_SIGNATURES.items():
@@ -89,7 +90,7 @@ class LogParser:
             return "syslog"  # fallback
         return best
 
-    def parse(self, file_path: Path) -> list[dict]:
+    def parse(self, file_path):
         events = []
         try:
             with open(file_path, "r", encoding="utf-8", errors="replace") as f:
@@ -117,7 +118,7 @@ class LogParser:
 
         return events
 
-    def _try_parse_line(self, line, line_num, log_type, patterns, source) -> dict | None:
+    def _try_parse_line(self, line, line_num, log_type, patterns, source):
         for pattern_name, pattern in patterns.items():
             match = pattern.search(line)
             if match:
