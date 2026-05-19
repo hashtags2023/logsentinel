@@ -53,17 +53,17 @@
 
 ## 🛡️ Detection Capabilities
 
-| Module | What It Detects |
-|---|---|
-| **SSH Brute Force** | Repeated failed login attempts from a single IP (configurable threshold) |
-| **Web Attacks** | SQL injection, XSS, path traversal, LFI, sensitive file probing |
-| **Suspicious Commands** | Dangerous sudo commands (wget/curl downloads, /tmp execution, base64 decode, netcat) |
-| **Privilege Escalation** | Direct root logins, session escalation |
-| **Account Activity** | New user account creation |
-| **After-Hours Logins** | Successful logins between 10 PM – 6 AM |
-| **Windows Events** | Monitors critical Event IDs: 4625, 4720, 4728, 4732, 1102, 7045, and more |
-| **High-Value Paths** | Access to `/etc/passwd`, `/.ssh/`, `/proc/`, `id_rsa`, `.env`, etc. |
-| **Scanner Activity** | Detects Nikto, sqlmap, Nessus, OpenVAS, and other scanner signatures |
+| Module                   | What It Detects                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------ |
+| **SSH Brute Force**      | Repeated failed login attempts from a single IP (configurable threshold)             |
+| **Web Attacks**          | SQL injection, XSS, path traversal, LFI, sensitive file probing                      |
+| **Suspicious Commands**  | Dangerous sudo commands (wget/curl downloads, /tmp execution, base64 decode, netcat) |
+| **Privilege Escalation** | Direct root logins, session escalation                                               |
+| **Account Activity**     | New user account creation                                                            |
+| **After-Hours Logins**   | Successful logins between 10 PM – 6 AM                                               |
+| **Windows Events**       | Monitors critical Event IDs: 4625, 4720, 4728, 4732, 1102, 7045, and more            |
+| **High-Value Paths**     | Access to `/etc/passwd`, `/.ssh/`, `/proc/`, `id_rsa`, `.env`, etc.                  |
+| **Scanner Activity**     | Detects Nikto, sqlmap, Nessus, OpenVAS, and other scanner signatures                 |
 
 ---
 
@@ -113,6 +113,7 @@ python -m analyzer.main sample_logs/auth.log --threshold 10
 LogSentinel generates **HTML** and **JSON** reports with severity-coded findings and remediation guidance.
 
 **HTML Report** — Dark-themed, color-coded by severity:
+
 - 🔴 Critical — Immediate action required
 - 🟠 High — Investigate promptly
 - 🟡 Medium — Review and monitor
@@ -159,7 +160,7 @@ logsentinel/
 ## 🗺️ Roadmap
 
 - [ ] Real-time log tailing (`--watch` mode)
-- [ ] IP reputation lookup integration (AbuseIPDB API)
+- [x] IP reputation lookup integration (AbuseIPDB API)
 - [ ] Geolocation of attacker IPs
 - [ ] Slack / email alerting
 - [ ] MITRE ATT&CK technique mapping
@@ -182,6 +183,7 @@ python -m analyzer.main sample_logs/access.log -t apache -v
 ```
 
 For more realistic testing, try against:
+
 - [DVWA](https://github.com/digininja/DVWA) — Generates real web attack logs
 - [Metasploitable](https://sourceforge.net/projects/metasploitable/) — Generates real auth/syslog events
 - [malware-traffic-analysis.net](https://www.malware-traffic-analysis.net/) — Real-world pcap and log samples
